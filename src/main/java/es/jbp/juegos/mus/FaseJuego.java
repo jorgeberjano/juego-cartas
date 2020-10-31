@@ -15,15 +15,18 @@ import java.util.List;
  *
  * @author jorge
  */
-public enum EstadoLance {
+public enum FaseJuego {
     DECIDIR_MUS(DAR_MUS, CORTAR),
     DESCARTE(DESCARTAR),
     APUESTA(PASAR, ENVIDAR, LANZAR_ORDAGO),
-    RESPUESTA(QUERER, NO_QUERER, ENVIDAR, LANZAR_ORDAGO);
+    RESPUESTA(QUERER, NO_QUERER, ENVIDAR, LANZAR_ORDAGO),
+    RESPUESTA_OTRO(QUERER, NO_QUERER, ENVIDAR, LANZAR_ORDAGO),
+    RESPUESTA_ORDAGO(QUERER, NO_QUERER),
+    RESPUESTA_ORDAGO_OTRO(QUERER, NO_QUERER);
     
     private List<Accion> acciones;
     
-    private EstadoLance(Accion... acciones) {
+    private FaseJuego(Accion... acciones) {
         this.acciones = Arrays.asList(acciones);
     }
 
