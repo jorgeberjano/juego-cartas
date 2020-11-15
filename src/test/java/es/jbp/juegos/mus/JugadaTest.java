@@ -1,12 +1,14 @@
 package es.jbp.juegos.mus;
 
-import es.jbp.juegos.mus.puntuadores.Puntuador;
-import es.jbp.juegos.mus.puntuadores.PuntuadorChicas;
-import es.jbp.juegos.mus.puntuadores.PuntuadorGrandes;
-import es.jbp.juegos.mus.puntuadores.PuntuadorJuego;
-import es.jbp.juegos.mus.puntuadores.PuntuadorPares;
+import es.jbp.juegos.mus.persistencia.Jugada;
+import es.jbp.juegos.mus.persistencia.Naipe;
+import es.jbp.juegos.mus.enumerados.Palo;
+import es.jbp.juegos.mus.logica.Puntuador;
+import es.jbp.juegos.mus.logica.PuntuadorChicas;
+import es.jbp.juegos.mus.logica.PuntuadorGrandes;
+import es.jbp.juegos.mus.logica.PuntuadorJuego;
+import es.jbp.juegos.mus.logica.PuntuadorPares;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -16,120 +18,125 @@ import org.junit.Test;
  */
 public class JugadaTest {
 
+    private static final int K = 10;
+    private static final int Q = 9;
+    private static final int J = 8;
+
     public JugadaTest() {
     }
 
-    static Jugada jugada1 = new Jugada();
-
-    static Jugada jugada2 = new Jugada();
-
-    static Jugada jugada3 = new Jugada();
-
-    static Jugada jugada4 = new Jugada();
-
-    static Jugada jugada5 = new Jugada();
-    
-    static Jugada jugada6 = new Jugada();
-    
-    static Jugada jugada7 = new Jugada();
-    
-    
-    static Puntuador puntuadorGrandes;
-    static Puntuador puntuadorChicas;
-    static Puntuador puntuadorPares;
-    static Puntuador puntuadorJuego;
+    static Jugada jugadaQQ21 = new Jugada();
+    static Jugada jugadaKK31 = new Jugada();
+    static Jugada jugadaJJJ7 = new Jugada();
+    static Jugada jugadaQQ11 = new Jugada();
+    static Jugada jugadaQ772 = new Jugada();
+    static Jugada jugada7654 = new Jugada();
+    static Jugada jugadaKKK3 = new Jugada();
+    static Jugada jugada3QJ2 = new Jugada();
+    static Jugada jugadaKQ21 = new Jugada();
 
     @BeforeClass
     public static void setUpClass() {
-        
-        puntuadorGrandes = new PuntuadorGrandes();
-        puntuadorChicas = new PuntuadorChicas();
-        puntuadorPares = new PuntuadorPares();
-        puntuadorJuego = new PuntuadorJuego();
 
-        jugada1.agregar(new Naipe(9, Palo.BASTOS));
-        jugada1.agregar(new Naipe(9, Palo.BASTOS));
-        jugada1.agregar(new Naipe(2, Palo.BASTOS));
-        jugada1.agregar(new Naipe(1, Palo.BASTOS));
+        jugadaQQ21.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaQQ21.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaQQ21.agregar(new Naipe(2, Palo.BASTOS));
+        jugadaQQ21.agregar(new Naipe(1, Palo.BASTOS));
 
-        jugada2.agregar(new Naipe(10, Palo.BASTOS));
-        jugada2.agregar(new Naipe(10, Palo.BASTOS));
-        jugada2.agregar(new Naipe(3, Palo.BASTOS));
-        jugada2.agregar(new Naipe(1, Palo.BASTOS));
+        jugadaKK31.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKK31.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKK31.agregar(new Naipe(3, Palo.BASTOS));
+        jugadaKK31.agregar(new Naipe(1, Palo.BASTOS));
 
-        jugada3.agregar(new Naipe(8, Palo.BASTOS));
-        jugada3.agregar(new Naipe(8, Palo.BASTOS));
-        jugada3.agregar(new Naipe(8, Palo.BASTOS));
-        jugada3.agregar(new Naipe(7, Palo.BASTOS));
+        jugadaJJJ7.agregar(new Naipe(J, Palo.BASTOS));
+        jugadaJJJ7.agregar(new Naipe(J, Palo.BASTOS));
+        jugadaJJJ7.agregar(new Naipe(J, Palo.BASTOS));
+        jugadaJJJ7.agregar(new Naipe(7, Palo.BASTOS));
 
-        jugada4.agregar(new Naipe(9, Palo.BASTOS));
-        jugada4.agregar(new Naipe(9, Palo.BASTOS));
-        jugada4.agregar(new Naipe(1, Palo.BASTOS));
-        jugada4.agregar(new Naipe(1, Palo.BASTOS));
+        jugadaQQ11.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaQQ11.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaQQ11.agregar(new Naipe(1, Palo.BASTOS));
+        jugadaQQ11.agregar(new Naipe(1, Palo.BASTOS));
 
-        jugada5.agregar(new Naipe(9, Palo.BASTOS));
-        jugada5.agregar(new Naipe(7, Palo.BASTOS));
-        jugada5.agregar(new Naipe(7, Palo.BASTOS));
-        jugada5.agregar(new Naipe(2, Palo.BASTOS));
+        jugadaQ772.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaQ772.agregar(new Naipe(7, Palo.BASTOS));
+        jugadaQ772.agregar(new Naipe(7, Palo.BASTOS));
+        jugadaQ772.agregar(new Naipe(2, Palo.BASTOS));
 
-        jugada6.agregar(new Naipe(7, Palo.BASTOS));
-        jugada6.agregar(new Naipe(6, Palo.BASTOS));
-        jugada6.agregar(new Naipe(5, Palo.BASTOS));
-        jugada6.agregar(new Naipe(4, Palo.BASTOS));
-        
-        jugada7.agregar(new Naipe(10, Palo.BASTOS));
-        jugada7.agregar(new Naipe(10, Palo.BASTOS));
-        jugada7.agregar(new Naipe(10, Palo.BASTOS));
-        jugada7.agregar(new Naipe(3, Palo.BASTOS));
+        jugada7654.agregar(new Naipe(7, Palo.BASTOS));
+        jugada7654.agregar(new Naipe(6, Palo.BASTOS));
+        jugada7654.agregar(new Naipe(5, Palo.BASTOS));
+        jugada7654.agregar(new Naipe(4, Palo.BASTOS));
+
+        jugadaKKK3.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKKK3.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKKK3.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKKK3.agregar(new Naipe(3, Palo.BASTOS));
+
+        jugada3QJ2.agregar(new Naipe(3, Palo.BASTOS));
+        jugada3QJ2.agregar(new Naipe(Q, Palo.BASTOS));
+        jugada3QJ2.agregar(new Naipe(J, Palo.BASTOS));
+        jugada3QJ2.agregar(new Naipe(2, Palo.BASTOS));
+
+        jugadaKQ21.agregar(new Naipe(K, Palo.BASTOS));
+        jugadaKQ21.agregar(new Naipe(Q, Palo.BASTOS));
+        jugadaKQ21.agregar(new Naipe(2, Palo.BASTOS));
+        jugadaKQ21.agregar(new Naipe(1, Palo.BASTOS));
+
     }
 
     @Test
     public void comparacionGrandes() {
-
-        Assert.assertEquals(8811, puntuadorGrandes.calcularPuntuacion(jugada1));
-        Assert.assertEquals(9991, puntuadorGrandes.calcularPuntuacion(jugada2));
-        Assert.assertEquals(7776, puntuadorGrandes.calcularPuntuacion(jugada3));
-        Assert.assertEquals(8811, puntuadorGrandes.calcularPuntuacion(jugada4));
-        Assert.assertEquals(8661, puntuadorGrandes.calcularPuntuacion(jugada5));
-        Assert.assertEquals(6543, puntuadorGrandes.calcularPuntuacion(jugada6));
-        Assert.assertEquals(9999, puntuadorGrandes.calcularPuntuacion(jugada7));
+        Puntuador puntuador = new PuntuadorGrandes();
+        Assert.assertEquals(8811, puntuador.calcularPuntuacion(jugadaQQ21));
+        Assert.assertEquals(9991, puntuador.calcularPuntuacion(jugadaKK31));
+        Assert.assertEquals(7776, puntuador.calcularPuntuacion(jugadaJJJ7));
+        Assert.assertEquals(8811, puntuador.calcularPuntuacion(jugadaQQ11));
+        Assert.assertEquals(8661, puntuador.calcularPuntuacion(jugadaQ772));
+        Assert.assertEquals(6543, puntuador.calcularPuntuacion(jugada7654));
+        Assert.assertEquals(9999, puntuador.calcularPuntuacion(jugadaKKK3));
+        Assert.assertEquals(9871, puntuador.calcularPuntuacion(jugada3QJ2));
+        Assert.assertEquals(9811, puntuador.calcularPuntuacion(jugadaKQ21));
     }
-    
+
     @Test
     public void comparacionChicas() {
-
-        Assert.assertEquals(22, puntuadorChicas.calcularPuntuacion(jugada1));
-        Assert.assertEquals(42, puntuadorChicas.calcularPuntuacion(jugada2));
-        Assert.assertEquals(37, puntuadorChicas.calcularPuntuacion(jugada3));
-        Assert.assertEquals(-8811, puntuadorChicas.calcularPuntuacion(jugada4));
-        Assert.assertEquals(-8661, puntuadorChicas.calcularPuntuacion(jugada5));
-        Assert.assertEquals(-6543, puntuadorChicas.calcularPuntuacion(jugada6));
-        Assert.assertEquals(-9999, puntuadorChicas.calcularPuntuacion(jugada7));
+        Puntuador puntuador = new PuntuadorChicas();
+        Assert.assertEquals(1188, puntuador.calcularPuntuacion(jugadaQQ21));
+        Assert.assertEquals(1999, puntuador.calcularPuntuacion(jugadaKK31));
+        Assert.assertEquals(6777, puntuador.calcularPuntuacion(jugadaJJJ7));
+        Assert.assertEquals(1188, puntuador.calcularPuntuacion(jugadaQQ11));
+        Assert.assertEquals(1668, puntuador.calcularPuntuacion(jugadaQ772));
+        Assert.assertEquals(3456, puntuador.calcularPuntuacion(jugada7654));
+        Assert.assertEquals(9999, puntuador.calcularPuntuacion(jugadaKKK3));
+        Assert.assertEquals(1789, puntuador.calcularPuntuacion(jugada3QJ2));
+        Assert.assertEquals(1189, puntuador.calcularPuntuacion(jugadaKQ21));
     }
-    
+
     @Test
     public void comparacionPares() {
-
-        Assert.assertEquals(48811, puntuadorPares.calcularPuntuacion(jugada1));
-        Assert.assertEquals(39991, puntuadorPares.calcularPuntuacion(jugada2));
-        Assert.assertEquals(37776, puntuadorPares.calcularPuntuacion(jugada3));
-        Assert.assertEquals(48811, puntuadorPares.calcularPuntuacion(jugada4));
-        Assert.assertEquals(28661, puntuadorPares.calcularPuntuacion(jugada5));
-        Assert.assertEquals(6543, puntuadorPares.calcularPuntuacion(jugada6));
-        Assert.assertEquals(49999, puntuadorPares.calcularPuntuacion(jugada7));
-
+        Puntuador puntuador = new PuntuadorPares();
+        Assert.assertEquals(8811, puntuador.calcularPuntuacion(jugadaQQ21));
+        Assert.assertEquals(999, puntuador.calcularPuntuacion(jugadaKK31));
+        Assert.assertEquals(777, puntuador.calcularPuntuacion(jugadaJJJ7));
+        Assert.assertEquals(8811, puntuador.calcularPuntuacion(jugadaQQ11));
+        Assert.assertEquals(66, puntuador.calcularPuntuacion(jugadaQ772));
+        Assert.assertEquals(0, puntuador.calcularPuntuacion(jugada7654));
+        Assert.assertEquals(9999, puntuador.calcularPuntuacion(jugadaKKK3));
+        Assert.assertEquals(0, puntuador.calcularPuntuacion(jugada3QJ2));
+        Assert.assertEquals(11, puntuador.calcularPuntuacion(jugadaKQ21));
     }
-    
+
     @Test
     public void comparacionJuego() {
-
-        Assert.assertEquals(22, puntuadorJuego.calcularPuntuacion(jugada1));
-        Assert.assertEquals(42, puntuadorJuego.calcularPuntuacion(jugada2));
-        Assert.assertEquals(37, puntuadorJuego.calcularPuntuacion(jugada3));
-        Assert.assertEquals(22, puntuadorJuego.calcularPuntuacion(jugada4));
-        Assert.assertEquals(25, puntuadorJuego.calcularPuntuacion(jugada5));
-        Assert.assertEquals(22, puntuadorJuego.calcularPuntuacion(jugada6));
-        Assert.assertEquals(40, puntuadorJuego.calcularPuntuacion(jugada7));
+        Puntuador puntuador = new PuntuadorJuego();
+        Assert.assertEquals(22, puntuador.calcularPuntuacion(jugadaQQ21));
+        Assert.assertEquals(42, puntuador.calcularPuntuacion(jugadaKK31));
+        Assert.assertEquals(37, puntuador.calcularPuntuacion(jugadaJJJ7));
+        Assert.assertEquals(22, puntuador.calcularPuntuacion(jugadaQQ11));
+        Assert.assertEquals(25, puntuador.calcularPuntuacion(jugadaQ772));
+        Assert.assertEquals(22, puntuador.calcularPuntuacion(jugada7654));
+        Assert.assertEquals(40, puntuador.calcularPuntuacion(jugadaKKK3));
 
     }
 

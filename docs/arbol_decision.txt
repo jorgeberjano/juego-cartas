@@ -1,0 +1,96 @@
+{
+    "animo": ( "normal", "ganando", "perdiendo", "desesperado" )
+    "fase": ( "descarte", "decidir_mus", "apuesta", "respuesta", "respuesta_ordago" )
+    "lance": ( "grandes", "chicas", "pares", "juego" )
+    "orden": ( 0 = mano, 1, 2, 3 = postre )
+    "nivelJugada": ( 0 ... 5 )
+    "descartes": ( 0, 1, 2, 3, >4 )
+    "nivelApuesta": ( 0 ... 5 )
+}
+
+Para decidir mus:
+
+JUEGO_31
+JUEGO_32
+DUPLES_Y_JUEGO_32
+DUPLES_Y_JUEGO
+DUPLES_GALLEGOS
+DUPLES
+SOLOMILLO
+MEDIA_GUARROS
+MEDIA
+PARES_Y_JUEGO
+PARES
+JUEGO
+CIEGO
+
+
+GRANDES
+5 insuperable     KKKK
+4 estupenda       KKKJ
+3 muy buena buena KKK
+2 buena           KK
+1 regular         K
+0 mala            resto
+
+CHICAS
+5 insuperable     1111
+4 estupenda       1115
+3 muy buena buena 111
+2 buena           11
+1 regular         1
+0 mala            resto
+
+PARES
+5 insuperable     KKKK
+4 estupenda       KKAA 
+3 muy buena buena 1111
+2 buena           111
+1 regular         KK
+0 mala            resto
+
+JUEGO
+5 insuperable     31
+4 estupenda       32
+3 muy buena buena 40
+2 buena           39
+1 regular         37
+0 mala            resto
+
+
+NIVEL APUESTA
+0   no hay apuesta
+1   2 puntos
+2   3 o 4 puntos
+3   4 o 5 puntos
+4   5..7 puntos
+5   > 7 puntos
+
+Acciones:
+
+Descarte:    
+    Buscar grandes: descartar todo menos K3Q
+    Buscar chicas: descartar todo menos 124
+    Buscar pares: descartar no pares
+    Buscar juego: descartar no figuras
+
+Decidir mus:
+    Mus 
+    Corto
+    
+Apuesta:
+    Envidar 2
+    Envidar 3 o 4
+    Envidar 4 o 5
+    Envidar 5..10
+    
+Respuesta:
+    Quiero
+    No quiero
+    Envidar 2
+    Envidar 3 o 4
+    Envidar 4 o 5
+    Envidar 5..10
+
+
+ 

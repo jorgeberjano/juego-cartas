@@ -1,42 +1,55 @@
 package es.jbp.juegos.mus.iu;
 
-import es.jbp.juegos.mus.Mesa;
+import es.jbp.juegos.mus.algoritmo.JugadorAlgoritmo;
+import es.jbp.juegos.mus.recursos.RecursoMesa;
 import es.shs.comun.utiles.swing.modelos.ModeloLista;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author jorge
  */
+@Component
 public class Ventana extends javax.swing.JFrame {
-
-    private Mesa mesa = new Mesa();
+   
+    @Autowired 
+    private RecursoMesa recursoMesa;
+    
     private final List<PanelJugador> panelesJugadores = new ArrayList();
-
+    
     /**
      * Creates new form Ventana
      */
     public Ventana() {
-        initComponents();
+        initComponents();        
+    }
+    
+    public void inicializar() {
+        panelJugador1.setNombreJugador("Arturo", 0);
+        panelJugador2.setNombreJugador("Bernardo", 1);
+        panelJugador3.setNombreJugador("Clemente", 2);
+        panelJugador4.setNombreJugador("Dionisio", 3);
 
-        panelJugador1.setNombre("Arturo");
-        panelJugador2.setNombre("Bernardo");
-        panelJugador3.setNombre("Clemente");
-        panelJugador4.setNombre("Dionisio");
-
+        panelJugador1.setJugadorAlgoritmo(new JugadorAlgoritmo(panelJugador1));
+        panelJugador2.setJugadorAlgoritmo(new JugadorAlgoritmo(panelJugador2));
+        panelJugador4.setJugadorAlgoritmo(new JugadorAlgoritmo(panelJugador4));
+        
+        
         panelesJugadores.add(panelJugador1);
         panelesJugadores.add(panelJugador2);
         panelesJugadores.add(panelJugador3);
         panelesJugadores.add(panelJugador4);
 
-        int i = 0;
-        for (PanelJugador panel : panelesJugadores) {
-            mesa.agregarJugador(panel, i++);
-            panel.setMesa(mesa);
+         recursoMesa.inicializar();
+        
+        for (PanelJugador panel : panelesJugadores) {            
+            panel.setRecursoMesa(recursoMesa);
         }
         
-        iniciarPartida();
+       
     }
 
     /**
@@ -54,7 +67,6 @@ public class Ventana extends javax.swing.JFrame {
         panelJugador2 = new es.jbp.juegos.mus.iu.PanelJugador();
         panelMesa = new javax.swing.JPanel();
         panelBotonesMesa = new javax.swing.JPanel();
-        botonIniciarPartida = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listMazo = new javax.swing.JList<>();
         panelJugador4 = new es.jbp.juegos.mus.iu.PanelJugador();
@@ -73,15 +85,6 @@ public class Ventana extends javax.swing.JFrame {
         panelMesa.setLayout(new javax.swing.BoxLayout(panelMesa, javax.swing.BoxLayout.PAGE_AXIS));
 
         panelBotonesMesa.setLayout(new javax.swing.BoxLayout(panelBotonesMesa, javax.swing.BoxLayout.LINE_AXIS));
-
-        botonIniciarPartida.setText("Iniciar");
-        botonIniciarPartida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonIniciarPartidaActionPerformed(evt);
-            }
-        });
-        panelBotonesMesa.add(botonIniciarPartida);
-
         panelMesa.add(panelBotonesMesa);
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(300, 300));
@@ -104,48 +107,8 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonIniciarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarPartidaActionPerformed
-        iniciarPartida();
-
-    }//GEN-LAST:event_botonIniciarPartidaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ventana().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonIniciarPartida;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -160,18 +123,4 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel panelMesa;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarListaMazo() {
-        ModeloLista modeloMazo = new ModeloLista(mesa.getMazo().getNaipes());
-        listMazo.setModel(modeloMazo);
-    }
-
-    private void iniciarPartida() {
-        try {            
-            mesa.iniciarPartida(0);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        actualizarListaMazo();
-    }
 }
